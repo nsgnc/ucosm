@@ -1,0 +1,27 @@
+#! /bin/sh
+# /etc/init.d/cosmlog
+# sudo update-rc.d cosmlog defaults
+# sudo chmod 755 /etc/init.d/cosmlog
+# sudo chown root:root /etc/init.d/cosmlog
+
+# Some things that run always
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+	echo "Starting script cosmlog "
+	/home/pi/cosm/clog.sh
+	echo "Started"
+    ;;
+  stop)
+    echo "Stopping script cosmlog"
+	killall clog.sh
+    echo "Stopped"
+    ;;
+  *)
+    echo "Usage: /etc/init.d/cosmlog {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
